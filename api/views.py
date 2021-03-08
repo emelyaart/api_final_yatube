@@ -8,6 +8,15 @@ from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
                           PostSerializer)
 
 
+class BaseGetPostViewSet(mixins.CreateModelMixin,
+                         mixins.ListModelMixin,
+                         viewsets.GenericViewSet):
+    '''
+    Базовый миксин класс-родитель с методами GET и POST
+    '''
+    pass
+
+
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -41,20 +50,15 @@ class CommentViewSet(viewsets.ModelViewSet):
         )
 
 
-class GroupViewSet(mixins.CreateModelMixin,
-                   mixins.ListModelMixin,
-                   viewsets.GenericViewSet):
+class GroupViewSet(BaseGetPostViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly,
-        IsAuthorOrReadOnly
+        permissions.IsAuthenticatedOrReadOnly
     ]
 
 
-class FollowViewSet(mixins.CreateModelMixin,
-                    mixins.ListModelMixin,
-                    viewsets.GenericViewSet):
+class FollowViewSet(BaseGetPostViewSet):
     serializer_class = FollowSerializer
     permission_classes = [
         permissions.IsAuthenticated
