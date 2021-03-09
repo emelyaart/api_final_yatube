@@ -11,9 +11,9 @@ from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
 class BaseGetPostViewSet(mixins.CreateModelMixin,
                          mixins.ListModelMixin,
                          viewsets.GenericViewSet):
-    '''
+    """
     Базовый миксин класс-родитель с методами GET и POST
-    '''
+    """
     pass
 
 
