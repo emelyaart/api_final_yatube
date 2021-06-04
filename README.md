@@ -39,7 +39,7 @@ python manage.py createsuperuser
 ```
 python manage.py runserver
 ```
-После удачного запуска сервера в терминале вы увидите выод примерно такого содержания:
+После удачного запуска сервера в терминале вы увидите вывод примерно такого содержания:
 ```
 Watching for file changes with StatReloader
 Performing system checks...
